@@ -4,7 +4,7 @@ CFLAGS=-Wall -g
 all: ex1
 
 clean:
-	rm -f ex1 ex3
+	rm -f ex1 ex3 ex4
 	rm -rf *.dSYM
 
 # You can make however many commands you want.
