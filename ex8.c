@@ -37,7 +37,7 @@ int main (int argc, char *argv[])
 	char full_name[] = {
 		'K', 'e', 'v', 'i', 'n',
 		' ', 'J', '.', ' ',
-		'M', 'o', 'o', 'r', 'e'
+		'M', 'o', 'o', 'r', 'e', '\0'
 	};
 
 	printf("The size of a char: %ld\n", sizeof(char));
