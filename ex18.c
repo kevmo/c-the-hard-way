@@ -12,6 +12,10 @@
 // const - not modifiable
 void die(const char *message)
 {
+	// "errno" = static memory location
+	// (error number)
+	// at startup --> value stored is 0
+	// lib funcs only store values greater than 0.
 	if(errno){
 		perror(message);
 	} else {
@@ -28,17 +32,19 @@ typedef int (*compare_cb)(int a, int b);
 
 /* just bubble sort things .~.*~*~*~*~! */
 // calling an param called `cmp` giving it the fake
-// type of we just declared
+// type of compare_cb
 int *bubble_sort(int *numbers, int count, compare_cb cmp)
 {
+	// set up all the variables to be used
 	int temp = 0;
 	int i = 0;
 	int j = 0;
+	// get your result array
 	int *target = malloc(count * sizeof(int));
-
 	if(!target) die("Memory error");
 
-		memcpy(target, numbers, count * sizeof(int));
+	// memcpy (destination, source, n bytes)
+	memcpy(target, numbers, count * sizeof(int));
 
 	for(i = 0; i < count; i++){
 		for (j=0; j < count - 1; j++){
@@ -89,6 +95,15 @@ void test_sorting(int *numbers, int count, compare_cb cmp)
 	printf("\n");
 
 	free(sorted);
+
+	// just some weird stuff to convert the pointer
+	// unsigned char *data = (unsigned char *)cmp;
+
+	// for(i = 0; i < 25; i++){
+	// 	printf("%02x:", data[i]);
+	// }
+
+	// printf("\n");
 }
 
 int main(int argc, char *argv[])
